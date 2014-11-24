@@ -1,0 +1,100 @@
+<li class="wd-jewelItem bdtno">
+		<a class="wd-jewelMainLink" href="#">
+			<img width="34" height="34" alt="Phill M." src="<?php echo baseUrl(); ?>img/thumb/img-thumb-6.jpg" class="wd-jl">
+			<div class="wd-jItermContent">
+				<div class="of_1 font_11">
+					<p class="wd_tt_mn"><strong>Tom H</strong> likes a photo of <span>Hikota M.<span></p>
+				</div>
+				<span class="wd-icon-16 wd-icon-notice-like"></span>
+			</div>
+		</a>
+	</li>
+	<li class="wd-jewelItem">
+		<a class="wd-jewelMainLink" href="#">
+			<img width="34" height="34" alt="Phill M." src="<?php echo baseUrl(); ?>img/thumb/img-thumb-7.jpg" class="wd-jl">
+			<div class="wd-jItermContent">
+				<div class="of_1 font_11">
+					<p class="wd_tt_mn"><strong>Yen Vy</strong> commented on her own photo: "lorum mission..."</p>
+				</div>
+				<span class="wd-icon-16 wd-icon-notice-commented"></span>
+			</div>
+		</a>
+	</li>
+	<li class="wd-jewelItem">
+		<a class="wd-jewelMainLink" href="#">
+			<img width="34" height="34" alt="Phill M." src="<?php echo baseUrl(); ?>img/thumb/img-thumb-8.jpg" class="wd-jl">
+			<div class="wd-jItermContent">
+				<div class="of_1 font_11">
+					<p class="wd_tt_mn"><strong>Marry P</strong> following <span>Oblivion 2013</span></p>
+				</div>
+				<span class="wd-icon-16 wd-icon-notice-following"></span>
+			</div>
+		</a>
+	</li>
+	<li class="wd-jewelItem">
+		<a class="wd-jewelMainLink" href="#">
+			<img width="34" height="34" alt="Phill M." src="<?php echo baseUrl(); ?>img/thumb/img-thumb-9.jpg" class="wd-jl">
+			<div class="wd-jItermContent">
+				<div class="of_1 font_11">
+					<p class="wd_tt_mn"><strong>Tommy N</strong> created movie <span>Insidious: Chapter 2</span></p>
+				</div>
+				<span class="wd-icon-16 wd-icon-notice-created"></span>
+			</div>
+		</a>
+	</li>
+	
+	<li class="wd-jewelItem">
+		<a class="wd-jewelMainLink" href="#">
+			<img width="34" height="34" alt="Phill M." src="<?php echo baseUrl(); ?>img/thumb/img-thumb-6.jpg" class="wd-jl">
+			<div class="wd-jItermContent">
+				<div class="of_1 font_11">
+					<p class="wd_tt_mn"><strong>Andy L</strong> share a link for <span>We're the Millers</span></p>
+				</div>
+				<span class="wd-icon-16 wd-icon-notice-link"></span>
+			</div>
+		</a>
+	</li>
+	<li class="wd-jewelItem">
+		<a class="wd-jewelMainLink" href="#">
+			<img width="34" height="34" alt="Phill M." src="<?php echo baseUrl(); ?>img/thumb/img-thumb-8.jpg" class="wd-jl">
+			<div class="wd-jItermContent">
+				<div class="of_1 font_11">
+					<p class="wd_tt_mn"><strong>Marry P</strong> following <span>Napoleon Bonaparte</span></p>
+				</div>
+				<span class="wd-icon-16 wd-icon-notice-following"></span>
+			</div>
+		</a>
+	</li>
+	<li class="wd-jewelItem">
+		<a class="wd-jewelMainLink" href="#">
+			<img width="34" height="34" alt="Phill M." src="<?php echo baseUrl(); ?>img/thumb/img-thumb-9.jpg" class="wd-jl">
+			<div class="wd-jItermContent">
+				<div class="of_1 font_11">
+					<p class="wd_tt_mn"><strong>Jenny L</strong> commented photo album of <span>Tommy N</span></p>
+				</div>
+				<span class="wd-icon-16 wd-icon-notice-commented"></span>
+			</div>
+		</a>
+	</li>
+	<li class="wd-jewelItem">
+		<a class="wd-jewelMainLink" href="#">
+			<img width="34" height="34" alt="Phill M." src="<?php echo baseUrl(); ?>img/thumb/img-thumb-10.jpg" class="wd-jl">
+			<div class="wd-jItermContent">
+				<div class="of_1 font_11">
+					<p class="wd_tt_mn"><strong>Matt N</strong> created event <span>Hard Rock Calling Axed For 2014</span></p>
+				</div>
+				<span class="wd-icon-16 wd-icon-notice-created"></span>
+			</div>
+		</a>
+	</li>
+	<li class="wd-jewelItem">
+		<a class="wd-jewelMainLink" href="#">
+			<img width="34" height="34" alt="Phill M." src="<?php echo baseUrl(); ?>img/thumb/img-thumb-9.jpg" class="wd-jl">
+			<div class="wd-jItermContent">
+				<div class="of_1 font_11">
+					<p class="wd_tt_mn"><strong>Tom P</strong> likes article of <span>Tom Cruise</span></p>
+				</div>
+				<span class="wd-icon-16 wd-icon-notice-like"></span>
+			</div>
+		</a>
+	</li>

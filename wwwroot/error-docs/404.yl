@@ -1,0 +1,46 @@
+<?php include("cache-header.yl");?>
+<!DOCTYPE html>
+<?php $base = "http://d372gwh0ypfy2k.cloudfront.net/myzone_v1/";?>
+<html>
+<head>
+	<title>Page Not Found</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+	<link href='http://fonts.googleapis.com/css?family=Annie+Use+Your+Telescope' rel='stylesheet' type='text/css'><!-- khai bao font google--->
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="<?php echo $base;?>css/reset.css" type="text/css" media="screen"/>
+	<link rel="stylesheet" href="<?php echo $base;?>css/common.css" type="text/css" media="screen"/>
+	<link rel="stylesheet" href="<?php echo $base;?>css/tipsy.css" type="text/css" media="screen"/>
+	<link rel="stylesheet" href="<?php echo $base;?>css/common-yl-layout.css" type="text/css" media="screen"/>
+
+	<!--[if IE 9]>
+		<link rel="stylesheet" href="<?php echo $base;?>css/home-ie9.css" type="text/css" media="screen"/>
+	<![endif]-->
+	<!--[if lt IE 9]>
+		<script src="<?php echo $base;?>js/css3-mediaqueries.js"></script>
+	<![endif]-->
+</head>
+<?php
+$referrer = '';
+if (!empty($_GET['url'])) {
+	$referrer = urldecode($_GET['url']);
+}
+?>
+<body>
+<div class="wd-wrapper">
+	<div class="wd-yl-container-error-page">
+		<div class="wd-center">
+			<h1 class="wd-header-logo">
+				<a class="wd-logo-4" href="/"><img src="<?php echo $base;?>img/front/logo-home-v3.gif" alt="YouLook" height="60" width="300"/></a>
+			</h1>
+			<div class="wd-error-mess">
+				<p class="wd-des-error"><span class="wd-tst">Sorry, the request URL:</span> <span class="wd-tgt">http://<?php echo $_SERVER['HTTP_HOST'];?><?php echo $referrer;?></span> <span class="wd-tst">was not found on this sever.</span></p>
+			</div>
+			<div class="wd-yl-content-error-page wd-yl-maincontainer-error-page-404">
+				<img src="<?php echo $base;?>img/front/mess-err-1.jpg" height="376" width="968" alt="error 404"/>
+				<a class="wd-yltn-gbt-1 wd-yl-home-link" href="/">Go to Homepage</a>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

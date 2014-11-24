@@ -1,0 +1,28 @@
+.notify-container{background-color:#7abd42;color:#fff; font-size:16px; cursor:pointer;height:31px;overflow:hidden; padding:10px 0; position:fixed; text-align:center;width:100%; z-index:100;-moz-box-shadow:0px 1px 8px #000000;-webkit-box-shadow:0px 1px 8px #000000;box-shadow:0px 1px 8px #000000;text-shadow:0px 0px 2px #599627;top:92px;}
+.notify-success-container{background-color:#7abd42;text-shadow:0px 0px 2px #599627;}
+.notify-error-container{background-color:#fccac1;border-color:#eb5439}
+.notify-error-container {background-color:#de0808;text-shadow:0px 0px 2px #c00707;}
+
+.notify-container .title-mess{border-bottom:none; color:#565656; font-size:14px; float:left; overflow:hidden; text-transform:uppercase }
+
+.notify-container .notify-icon{background:url(../img/front/bg-notifi-mess.png) no-repeat -20px 0;display:inline-block;margin-right:7px;height: 31px;overflow:hidden; width: 31px;}
+.notify-message-container .notify-icon,.notify-info-container .notify-icon{background-position:-52px 0}
+.notify-error-container .notify-icon{display:none}
+
+.notify-container .notify-message{display:inline-block;line-height:31px;overflow:hidden;vertical-align:top}
+.notify-container .notify-message strong,.notify-container .notify-message a{color:#fff;font-weight:bold}
+.notify-container a.notify-close{background:url(../img/front/bg-notifi-mess.png) no-repeat 0 0;display:block;height: 18px; position:absolute;right: 20px; top:17px;  width: 18px;}
+
+
+/* dialog */
+.appriseOuter{background-color:#7abd42;color:#fff; font-size:16px; cursor:pointer;height:31px;overflow:hidden; padding:10px 0; position:fixed; text-align:center;width:100%; z-index:100;-moz-box-shadow:0px 1px 8px #000000;-webkit-box-shadow:0px 1px 8px #000000;box-shadow:0px 1px 8px #000000;text-shadow:0px 0px 2px #599627;top:92px;}
+.message{padding-top:7px;padding-right:90px}
+.message a{color:#fff;font-weight:bold}
+.message a:hover{text-decoration:underline}
+.wd-container-bt-popup{position:absolute;top:12px;right:25px;overflow:hidden}
+.wd-container-bt-popup .wd-bt-big-2{float:right}
+.wd-container-bt-popup .wd-bt-big-2 input[type="button"]{background-color:#e45826;border:1px solid #d84c19;color:#fff;font-size:12px;font-weight:bold; padding:8px 30px;-moz-border-radius:3px;-webkit-border-radius:3px; border-radius:3px;text-shadow:2px 2px 2px #c24519;cursor:pointer;margin-left:4px}
+.wd-container-bt-popup .wd-bt-big-2 input#popup_ok{background-color:#e45826;border:1px solid #d84c19;text-shadow:2px 2px 2px #c24519;}
+.wd-container-bt-popup .wd-bt-big-2 input#popup_ok:hover{background-color:#d24c1d}
+.wd-container-bt-popup .wd-bt-big-2 input#popup_cancel{background-color:#58a61a;border:1px solid #478f0f;text-shadow:2px 2px 2px #568b2c;}
+.wd-container-bt-popup .wd-bt-big-2 input#popup_cancel:hover{background-color:#509e11}

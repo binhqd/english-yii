@@ -1,0 +1,40 @@
+<?php include("cache-header.yl");?>
+<!DOCTYPE html>
+<?php $base = "http://d372gwh0ypfy2k.cloudfront.net/myzone_v1/";?>
+<html>
+<head>
+	<title>Server Error</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="<?php echo $base;?>css/reset.css" type="text/css" media="screen"/>
+	<link rel="stylesheet" href="<?php echo $base;?>css/common.css" type="text/css" media="screen"/>
+	<link rel="stylesheet" href="<?php echo $base;?>css/tipsy.css" type="text/css" media="screen"/>
+	<link rel="stylesheet" href="<?php echo $base;?>css/common-yl-layout.css" type="text/css" media="screen"/>
+
+	<!--[if IE 9]>
+		<link rel="stylesheet" href="<?php echo $base;?>css/home-ie9.css" type="text/css" media="screen"/>
+	<![endif]-->
+	<!--[if lt IE 9]>
+		<script src="<?php echo $base;?>js/css3-mediaqueries.js"></script>
+	<![endif]-->
+</head>
+<body>
+<div class="wd-wrapper">
+	<div class="wd-yl-container-error-page">
+		<div class="wd-center">
+			<h1 class="wd-header-logo">
+				<a class="wd-logo-4" href="/"><img src="<?php echo $base;?>img/front/logo-home-v3.gif" alt="YouLook" height="60" width="300"/></a>
+			</h1>
+			<div class="wd-error-mess">
+				<h3 class="wd-stt-ep">There was an error occurs on our server. </h3>
+				<p class="wd-des-error">The error has been logged. Please try again later.</p>
+			</div>
+			<div class="wd-yl-content-error-page">
+				<img src="<?php echo $base;?>img/front/mess-err-2.jpg" alt="error 500" height="378" width="938"/>
+				<a class="wd-yltn-gbt-1 wd-yl-home-link" href="/">Go to Homepage</a>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

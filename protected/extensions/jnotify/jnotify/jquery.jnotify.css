@@ -1,0 +1,10 @@
+.jnotify-item{height:auto;padding:10px;margin-bottom:7px;display:block;position:relative;font-size:13px;}
+.jnotify-item span{margin-top:2px;}
+.jnotify-item-close{float:right;margin-left:20px;}
+.jnotify-item-wrapper .jnotify-corner-all {-moz-border-radius:3px;-webkit-border-radius:3px;border-radius:3px;}
+.jnotify-item-wrapper .jnotify-state-error {border: 1px solid #CD0A0A; background-color: #f26868;color:#ffffff;}
+.jnotify-item-wrapper .jnotify-state-highlight {border: 1px solid #fed22f; background-color: #FFF0A5;}
+.jnotify-item a{color:#0E7ECA !important;}
+.jnotify-item .ui-icon-circle-close {cursor:pointer}
+
+.jnotify-item .jnotify-item-content {text-align:center;}

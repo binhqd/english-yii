@@ -1,0 +1,18 @@
+#php_value memory_limit 512M
+#Options +FollowSymLinks
+
+RewriteEngine On
+
+#RewriteRule (.*) rewrite.php?ug=%{HTTP_USER_AGENT} [L]
+
+Header set Access-Control-Allow-Origin *
+#Header set Access-Control-Allow-Headers *
+Header set Access-Control-Allow-Headers "Access-Token, If-None-Match, X-Requested-With, API-Version"
+#Header set Access-Control-Allow-Methods: PUT, DELETE, GET, DELETE
+Header set Access-Control-Max-Age: 3628800
+  
+RewriteCond %{REQUEST_FILENAME} -s [OR]
+RewriteCond %{REQUEST_FILENAME} -l [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^.*$ - [NC,L]
+RewriteRule ^.*$ index.php [NC,L]

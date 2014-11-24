@@ -1,0 +1,164 @@
+/************************************************
+ Header
+*************************************************/
+#header {
+    background: #0c74b3;
+
+}
+#header h1 {
+    height: 47px;
+}
+
+.chart-wrapper {
+    width:100%;
+    height:400px;
+    position: relative;
+}
+/************************************************
+ Content
+*************************************************/
+#content-header h1 {
+
+}
+/************************************************
+ Style Data Table
+*************************************************/
+.DataTables_sort_icon {
+    float: left;
+}
+
+.report-selection label {
+    cursor: pointer;
+    float: left;
+    margin: 0 10px 10px 0;
+    padding: 0 16px 0 0;
+}
+.report-selection label.loading {
+    background: url(../img/load.gif) no-repeat scroll right center transparent;
+}
+.report-selection label input {
+    margin: 0;
+}
+/************************************************
+ Toolbar
+*************************************************/
+.db-tools {
+    position: absolute;
+    right: -11px;
+    top: -51px;
+    margin: 0;
+    padding: 0;
+}
+.db-tools a {
+    cursor: pointer;
+}
+/************************************************
+ JChartFX
+*************************************************/
+#chartToolTip,
+.jchartfxToolTip2,
+#chartToolTip .jchartfxToolTip2 {
+    display: none;
+}
+
+/************************************************
+ Login Form
+*************************************************/
+#LoginForm_rememberMe {
+    float: left;
+}
+#login-form .pull-left {
+    width: 120px;
+}
+#login-form {
+    margin: 0;
+}
+#login-form label {
+    cursor: pointer;
+}
+.errorMessage {
+    color: orangered;
+}
+/************************************************
+ Vector Map
+*************************************************/
+.vector-map {
+    width: 100%;
+    height: 400px;
+}
+
+/************************************************
+ Nav Tabs
+*************************************************/
+.nav-tabs > li > a {
+    cursor: pointer;
+}
+/************************************************
+ Overview Table
+*************************************************/
+.book-name-title {
+
+}
+.page-views-title {
+    width: 80px;
+
+}
+.visits-title {
+    width: 50px;
+
+}
+.unique-visits-title {
+    width: 90px;
+
+}
+.last-visited-title {
+
+}
+.links-clicks-title {
+    width: 80px;
+
+}
+/************************************************
+ Footer
+*************************************************/
+.footer-content {
+    margin: 0 auto;
+    width: 540px;
+
+}
+.footer-content img {
+    float: left;
+    margin: 7px 0 0;
+
+}
+.footer-content p {
+    float: left;
+    margin: 0 0 0 19px;
+    text-align: left;
+    color: #444;
+    font-size: 10px;
+    line-height: 140%;
+
+}
+/************************************************
+ Alerts
+*************************************************/
+.alert strong {
+    text-transform: uppercase;
+}
+/************************************************
+ Minimal content
+*************************************************/
+.container-fluid .row-fluid:first-child {
+    margin-top: 0;
+}
+.container-fluid .row-fluid:first-child .widget-box {
+    margin-top: 0;
+}
+/************************************************
+ Dashboard
+*************************************************/
+.detailed-info-link {
+    display: block;
+    text-align: right;
+}

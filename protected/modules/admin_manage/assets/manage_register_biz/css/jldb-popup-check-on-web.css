@@ -1,0 +1,7 @@
+#wd-popup-check-on-web{min-width:600px;padding:7px;background-color:#ededed;font-size:12px}
+#wd-popup-check-on-web h2.wd-title{font-size:20px;color:#0E7ECA;padding-bottom:5px;margin-bottom:10px}
+#wd-popup-check-on-web .wd-popup-content{border:1px solid #d1d1d1;background-color:#fff;padding:10px;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;padding:10px 35px 10px 15px;overflow:hidden}
+
+#wd-popup-check-on-web .wd-container{border-right:1px solid #eee;vertical-align:top;padding:10px 25px 15px 0;overflow:hidden;}
+#wd-popup-check-on-web .wd-right-content{float:right;width:180px;vertical-align:top;margin-left:-1px;border-left:1px solid #eee;padding:10px 10px 15px}
+#wd-popup-check-on-web .wd-list-action li{padding:2px 0}

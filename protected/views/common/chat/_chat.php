@@ -1,0 +1,1 @@
+<?php $this->renderPartial('application.modules.chat.views.common.client') ?>

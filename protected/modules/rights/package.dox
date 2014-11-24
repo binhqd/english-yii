@@ -1,0 +1,7 @@
+/*! @package rights
+
+Quyền người dùng JL
+
+\dir modules/rights Quyền người dùng JL
+\defgroup rights rights
+*/

@@ -1,0 +1,9 @@
+.coregreennet-wp-comment div textarea {
+	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	border-radius: 0px;
+	resize: none;
+}
+.coregreennet-textarea-comment{
+	overflow: hidden;
+}

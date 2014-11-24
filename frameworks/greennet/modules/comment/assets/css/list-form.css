@@ -1,0 +1,27 @@
+.coregreennet-comments-avatar{float: left;}
+.coregreennet-delete-comment{float: right;width: 8px;z-index: 2000;}
+.coregreennet-delete-comment img:hover{cursor: pointer;cursor: hand;}
+.coregreennet-comments-date{float: left;}
+.total-comments a:hover{cursor:pointer;cursor:hand;}
+.people-like-item{position: absolute;z-index: 10000;}
+
+<!-- Phan nay de test co the xoa khi rap vao modules -->
+
+.wd-commentpost {
+	padding-left: 40px;
+	font-size: 12px;
+}
+.coregreennet-textarea-comment{
+	height: 21px;
+	padding-left:2px; 
+}
+.coregreennet-comments-date label{
+	font-size: 10px;
+}
+.clr{
+	clear: both;
+}
+.coregreennet-show-comments{
+	cursor: pointer;
+	cursor: hand;
+}
