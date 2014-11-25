@@ -34,7 +34,9 @@ class GNStandardApiController extends GNApiController {
 		try {
 			$model = new $subDefinition['class'];
 			
-			$total = $model->count();
+			$total = $model->count("{$subDefinition['key']}=:foreign_key", array(
+				":foreign_key"	=> IDHelper::uuidToBinary($parentId)
+			));
 			$pages = new CPagination($total);
 			$pages->pageSize = ApiAccess::$limit;
 			

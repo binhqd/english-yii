@@ -305,7 +305,6 @@ class ZoneApiResponse extends CApplicationComponent
 			}
 		}
 		$requestURL = '/' . trim($requestURL, '/') . '/';
-
 		foreach ($parts as $part => $params) {
 			$serverBackup = $_SERVER;
 			$getBackup = $_GET;

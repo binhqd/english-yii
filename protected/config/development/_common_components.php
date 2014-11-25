@@ -36,7 +36,7 @@ return array(
 	),
 	// uncomment the following to use a MySQL database
 	'db' => array(
-		'connectionString' => "mysql:host=localhost;dbname=english;port=3306",
+		'connectionString' => "mysql:host=localhost;dbname=gg-english;port=3306",
 		'emulatePrepare' => true,
 		'username' => 'binhqd',
 		'password' => '123456',

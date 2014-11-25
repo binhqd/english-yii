@@ -87,7 +87,14 @@ return
 				),
 			)
 		),
-		'params'			=> require(DEFAULT_CONFIG_DIR . APPLICATION_ENV . '/params.php'),
+		'params'			=> array_merge(require(DEFAULT_CONFIG_DIR . APPLICATION_ENV . '/params.php'),
+			array(
+				'partAlias' => array(
+					'me' => 'users',
+					'collections'	=> 'collections'
+				)
+			)
+		),
 		'aliases' => array(
 				//If you manually installed it
 				'xupload' => 'ext.xupload'
