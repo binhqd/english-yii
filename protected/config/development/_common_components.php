@@ -36,7 +36,7 @@ return array(
 	),
 	// uncomment the following to use a MySQL database
 	'db' => array(
-		'connectionString' => "mysql:host=localhost;dbname=diablo;port=3306",
+		'connectionString' => "mysql:host=localhost;dbname=english;port=3306",
 		'emulatePrepare' => true,
 		'username' => 'binhqd',
 		'password' => '123456',
@@ -109,8 +109,8 @@ return array(
 		'transportType'=>'smtp', /// case sensitive!
 		'transportOptions'=>array(
 			'host'=>'smtp.gmail.com',
-			'username' => 'myzonedev@gmail.com',
-			'password' => 'myzonedev2013',
+			'username' => '',
+			'password' => '',
 			'port'=>'465',
 			'encryption'=>'ssl',
 		),
