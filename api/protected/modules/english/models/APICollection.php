@@ -27,7 +27,6 @@ class APICollection extends GNApiActiveRecord
 // 	}
 	public function parse($record) {
 		$record = parent::parse($record);
-		
 		if (isset($record['created']))
 			$record['created'] = date(DateTime::ISO8601, strtotime($record['created']));
 			
@@ -35,23 +34,5 @@ class APICollection extends GNApiActiveRecord
 			$record['user_id'] = IDHelper::uuidFromBinary($record['user_id'], true);
 		
 		return $record;
-	}
-	
-	public function getList($pages) {
-		// TODO: Filter by user_id
-		try {
-			$records = Yii::app()->db->createCommand()
-			->select($this->getFields(ApiAccess::getFields()))
-			->from($this->tableName())
-			->limit($pages->limit)
-			->offset($pages->offset)
-			->queryAll();
-		} catch (Exception $ex) {
-			if ($ex->getCode() == 42) {
-				Yii::app()->response->send(400, array(), Yii::t('apicore', "Invalid request. Unknow column."));
-			}
-		}
-		
-		return $records;
 	}
 }

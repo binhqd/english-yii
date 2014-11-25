@@ -34,21 +34,18 @@ class GNStandardApiController extends GNApiController {
 		try {
 			$model = new $subDefinition['class'];
 			
-			$total = $model->count("{$subDefinition['key']}=:foreign_key", array(
+			$total = $model->getTotal("{$subDefinition['key']}=:foreign_key", array(
 				":foreign_key"	=> IDHelper::uuidToBinary($parentId)
 			));
 			$pages = new CPagination($total);
 			$pages->pageSize = ApiAccess::$limit;
 			
-			$records = Yii::app()->db->createCommand()
-			->select($this->model->getFields(ApiAccess::getFields()))
-			->from($model->tableName())
-			->where("{$subDefinition['key']}=:foreign_key", array(
-				":foreign_key"	=> IDHelper::uuidToBinary($parentId)
-			))
-			->limit($pages->limit)
-			->offset($pages->offset)
-			->queryAll();
+			$records = $model->getList($pages, array(
+				'conditions'	=> "{$subDefinition['key']}=:foreign_key",
+				'params'		=> array(
+					":foreign_key"	=> IDHelper::uuidToBinary($parentId)
+				)
+			));
 			
 			$arr = array();
 			foreach ($records as $record) {
@@ -136,34 +133,24 @@ class GNStandardApiController extends GNApiController {
 	}
 	
 	public function getList() {
-		$total = $this->model->count();
+		$total = $this->model->total;
 		$pages = new CPagination($total);
 		$pages->pageSize = ApiAccess::$limit;
 		
-		if (method_exists($this->model, 'getList')) {
+		try {		
 			$records = $this->model->getList($pages);
-		} else {
-			try {
-				$records = Yii::app()->db->createCommand()
-			    ->select($this->model->getFields(ApiAccess::getFields()))
-			    ->from($this->model->tableName())
-			    ->limit($pages->limit)
-			    ->offset($pages->offset)
-			    ->queryAll();
-				
-			} catch (Exception $ex) {
-				if ($ex->getCode() == 42) {
-					Yii::app()->response->send(400, array(), Yii::t('apicore', "Invalid request. Unknow column."));
-				}
+			
+			$arr = array();
+			foreach ($records as $record) {
+				$arr[] = $this->model->parse($record);
 			}
-		}
-		
-		$arr = array();
-		foreach ($records as $record) {
-			$arr[] = $this->model->parse($record);
-		}
-		$records = $arr;
-		
+			$records = $arr;
+			
+		} catch (Exception $ex) {
+			if ($ex->getCode() == 42) {
+				Yii::app()->response->send(400, array(), Yii::t('apicore', "Invalid request. Unknow column."));
+			}
+		}	
 		// response
 		$out = array(
 			"items" => $records,
