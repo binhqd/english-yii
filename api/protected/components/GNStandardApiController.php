@@ -48,18 +48,18 @@ class GNStandardApiController extends GNApiController {
 			->offset($pages->offset)
 			->queryAll();
 			
+			$arr = array();
+			foreach ($records as $record) {
+				$arr[] = $model->parse($record);
+			}
+			$records = $arr;
+			
 		} catch (Exception $ex) {
 			if ($ex->getCode() == 42) {
 				Yii::app()->response->send(400, array(), Yii::t('apicore', "Invalid request. Unknow column."));
 			}
 		}
-		
-		$arr = array();
-		foreach ($records as $record) {
-			$arr[] = $this->model->parse($record);
-		}
-		$records = $arr;
-		
+
 		// response
 		$out = array(
 			"items" => $records,
@@ -187,7 +187,10 @@ class GNStandardApiController extends GNApiController {
 		if (empty($record)) {
 			Yii::app()->response->send(404, array(), Yii::t('apicore', "Record not found."));
 		} else {
-			Yii::app()->response->send(200, $record);
+			$out = array(
+				$this->id	=> $record
+			);
+			Yii::app()->response->send(200, $out);
 		}
 		
 	}

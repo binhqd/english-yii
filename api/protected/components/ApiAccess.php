@@ -14,26 +14,22 @@ class ApiAccess extends CApplicationComponent
 	 * @var string duration of token
 	 */
 	public static $duration = '+30 days';
-	
 	public static $version = API_VERSION;
-	
 	public static $headers = array();
-	
 	public static $session = array();
-	
 	public static $method = "GET";
+	
 	/**
 	 * @var string path for store token
 	 */
 	public static $prefix = 't_';
-
+	
 	public static $access_token = "";
 	
 	private static $_parts = array();
 	
 	public static $limit = 10;
 	public static $fields = '*';
-	
 	/**
 	 * Token key
 	 */
@@ -54,14 +50,17 @@ class ApiAccess extends CApplicationComponent
 		return intval(time() + $duration);
 	}
 	
-	public static function setParts($parts) {
+	public static function setParts($parts)
+	{
 		$arrParts = explode(",", $parts);
 		self::$_parts = array_map("trim", $arrParts);
 	}
-	
-	public static function getParts() {
+
+	public static function getParts()
+	{
 		return self::$_parts;
 	}
+	
 	/**
 	 * This method is used to request token
 	 */
@@ -86,7 +85,7 @@ class ApiAccess extends CApplicationComponent
 			Yii::app()->cache->delete(static::$prefix . $token);
 		}
 	}
-	
+
 	/**
 	 * This method is used to validate code
 	 */
@@ -94,7 +93,7 @@ class ApiAccess extends CApplicationComponent
 	{
 		return md5($User->password . '.' . $User->saltkey . '.' . $token);
 	}
-	
+
 	/**
 	 * This method is used to generate token
 	 */
@@ -105,24 +104,19 @@ class ApiAccess extends CApplicationComponent
 			throw new Exception($message, 401);
 		}
 		$currentUser = currentUser();
-		
 		$User = ZoneUser::model()->findByPk($currentUser->id);
-		
 		$data = array(
-			'ip'			=> isset($_SERVER['REMOTE_ADDR'])?$_SERVER['REMOTE_ADDR']:'',
+			'ip' => isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '',
 			//'session_id'	=> Yii::app()->session->sessionID,
-			'user_agent'	=> isset($_SERVER['HTTP_USER_AGENT'])?$_SERVER['HTTP_USER_AGENT']:'',
-			'user_id'		=> $currentUser->hexID,
-			'expires_at'	=> self::expiresAt(),
+			'user_agent' => isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : '',
+			'user_id' => $currentUser->hexID,
+			'expires_at' => self::expiresAt() ,
 			//'code'			=> self::validateCode($User, )
 		);
-		
-		static::clearCurrentToken();
-		
+		static ::clearCurrentToken();
 		$token = preg_replace('/[^a-z0-9]/i', '', base64_encode(md5(serialize($data))));
 		$data['code'] = self::validateCode($User, $token);
-		
-		static::_setTokenData($token, $data);
+		static ::_setTokenData($token, $data);
 		return $token;
 	}
 
@@ -132,7 +126,7 @@ class ApiAccess extends CApplicationComponent
 	protected static function _setTokenData($token, $data)
 	{
 		$data['session_id'] = Yii::app()->session->sessionID;
-		Yii::app()->cache->set(static::$prefix . $token, $data);
+		Yii::app()->cache->set(static ::$prefix . $token, $data);
 	}
 	
 	public static function getFields() {
@@ -142,7 +136,8 @@ class ApiAccess extends CApplicationComponent
 	 * This method is used to parse header information
 	 * @param unknown_type $headers
 	 */
-	public static function parse($headers) {
+	public static function parse($headers)
+	{
 		if (isset($headers[self::TOKEN_KEY])) {
 			self::$access_token = $headers[self::TOKEN_KEY];
 		}
@@ -150,58 +145,54 @@ class ApiAccess extends CApplicationComponent
 		self::$limit = Yii::app()->request->getParam('limit');
 		self::$fields = Yii::app()->request->getParam('fields');
 	}
-	
-	public static function check() {
+	public static function check()
+	{
 		$headers = getallheaders();
 		self::parse($headers);
-		
 		self::$headers = $headers;
-		
+
 		// Set version information
 		if (isset($headers['API-Version'])) {
 			self::$version = $headers['API-Version'];
 		}
-		
 		self::$method = strtoupper($_SERVER['REQUEST_METHOD']);
-		
+
 		// if access token is given, check if access token is a valid one
 		if (!empty(self::$access_token)) {
-			$data = Yii::app()->cache->get(static::$prefix . self::$access_token);
+			$data = Yii::app()->cache->get(static ::$prefix . self::$access_token);
 			if (!empty($data) && time() < $data['expires_at'] /*&& $_SERVER['REMOTE_ADDR'] == $data['ip']*/) {
 				self::$session = $data;
-// 				@session_id(ApiAccess::$session['session_id']);
+				// 				@session_id(ApiAccess::$session['session_id']);
 				Yii::app()->session->sessionID = ApiAccess::$session['session_id'];
 				Yii::app()->session->open();
-				
 				if (currentUser()->isGuest) {
 					$User = ZoneUser::model()->findByPk(IDHelper::uuidToBinary($data['user_id']));
-					if (static::validateCode($User, self::$access_token) == @$data['code']) {
+					if (static ::validateCode($User, self::$access_token) == @$data['code']) {
 						$User->forceLogin();
-						static::_setTokenData(self::$access_token, $data);
+						static ::_setTokenData(self::$access_token, $data);
 					}
 				}
 			}
 		}
-		
+
 		// parse part query
 		$parts = Yii::app()->request->getParam('part');
 		self::setParts($parts);
-		
 	}
-	
+
 	/**
 	 * This method is used to prevent all un-allow methods
 	 * @param unknown_type $methods
 	 */
-	public static function allow($strMethods) {
+	public static function allow($strMethods)
+	{
 		$methods = explode(",", strtoupper($strMethods));
 		array_map("trim", $methods);
-		
 		if (!in_array(self::$method, $methods)) {
 			$message = Yii::t("Youlook", "Invalid request method. This action only allow these methods: {methods}", array(
-				'{methods}'	=> $strMethods
+				'{methods}' => $strMethods
 			));
-			Yii::app()->response->send(405, array(), $message);
+			Yii::app()->response->send(405, array() , $message);
 		}
 	}
 }
