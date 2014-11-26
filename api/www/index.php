@@ -1,6 +1,6 @@
 <?php
 $includePath = get_include_path();
-define('APP_ROOT', realpath(dirname(__FILE__) . '/../'));
+define('APP_ROOT', realpath(dirname(__FILE__) . '/../../'));
 
 set_include_path($includePath . PATH_SEPARATOR . APP_ROOT . '/protected/extensions');
 
