@@ -55,7 +55,7 @@ class GNStandardApiController extends GNApiController {
 			
 		} catch (Exception $ex) {
 			if ($ex->getCode() == 42) {
-				Yii::app()->response->send(400, array(), Yii::t('apicore', "Invalid request. Unknow column."));
+				Yii::app()->response->send(400, array(), Yii::t('apicore', "Invalid request. Unknown column."));
 			}
 		}
 
@@ -86,21 +86,20 @@ class GNStandardApiController extends GNApiController {
 						return parent::createAction($actionID);
 					} else {
 						$id = $actionID;
-						
-						
 						// get detail
 						$this->getDetail($id);
 					}
 				}
 				break;
 			case 'POST':
-				
+				$this->createNewRecord();
 				break;
 			case 'PUT':
-				
+				$this->updateRecord();
 				break;
 			case 'DELETE':
-				
+				$id = $actionID;
+				$this->deleteRecord($id);
 				break;
 		}
 		
@@ -118,9 +117,7 @@ class GNStandardApiController extends GNApiController {
 			}
 		} else {
 			// response
-			$out = array(
-				
-			);
+			$out = array();
 			Yii::app()->response->send(404, $out, "Invalid Request");
 		}
 	}
@@ -130,6 +127,56 @@ class GNStandardApiController extends GNApiController {
 	}
 	public function runAction($action) {
 		parent::runAction($action);
+	}
+	
+	protected function updateRecord() {
+		// set attributes
+		ApiAccess::allow("PUT");
+		
+		parse_str(file_get_contents("php://input"), $putVars);
+		
+		if (!isset($putVars)) {
+			throw new Exception("Invalid record ID");
+		}
+		$putVars['id'] = IDHelper::uuidToBinary($putVars['id']);
+		
+		$model = $this->model->updateRecord($putVars);
+		//response
+		
+		$record = $this->model->parse($model->attributes);
+		$out = array(
+			$this->id => $record
+		);
+		
+		Yii::app()->response->send(200, $out);
+	}
+	
+	protected function deleteRecord($id) {
+		// set attributes
+		ApiAccess::allow("DELETE");
+		
+		if ($this->model->deleteRecord(IDHelper::uuidToBinary($id))) {
+			Yii::app()->response->send(200, array(), Yii::t("Record deleted"));
+		} else {
+			throw new Exception("Can't delete record");
+		}
+	}
+	
+	protected function createNewRecord() {
+		// set attributes
+		ApiAccess::allow("POST");
+		
+		if ($this->model->createNewRecord($_POST)) {
+			//response
+			
+			$record = $this->model->parse($this->model->attributes);
+			$out = array(
+				$this->id => $record
+			);
+			Yii::app()->response->send(200, $out);
+		} else {
+			Yii::app()->response->send(401, $out, "Invalid request");
+		}
 	}
 	
 	public function getList() {
@@ -148,7 +195,7 @@ class GNStandardApiController extends GNApiController {
 			
 		} catch (Exception $ex) {
 			if ($ex->getCode() == 42) {
-				Yii::app()->response->send(400, array(), Yii::t('apicore', "Invalid request. Unknow column."));
+				Yii::app()->response->send(400, array(), Yii::t('apicore', "Invalid request. Unknown column."));
 			}
 		}	
 		// response
@@ -158,7 +205,7 @@ class GNStandardApiController extends GNApiController {
 				'total' => (int)$pages->itemCount,
 				'limit' => (int)$pages->limit,
 				'page' => (int)$pages->currentPage + 1,
-			),
+			)
 		);
 		
 		Yii::app()->response->send(200, $out);

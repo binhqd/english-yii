@@ -65,4 +65,59 @@ class GNApiActiveRecord extends GNActiveRecord {
 		
 		return $records;
 	}
+	
+	public function createNewRecord($data) {
+		$this->scenario = 'create';
+		$this->attributes = $data;
+		
+		if (!$this->validate()) {
+			$errors = array_shift(array_values($this->errors));
+			if (isset($errors[0])) {
+				throw new Exception($errors[0], 400);
+			}
+		}
+		
+		$this->isNewRecord = true;
+		return $this->save();
+	}
+	
+	public function updateRecord($data) {
+		$this->scenario = 'update';
+		
+		if (!isset($data['id'])) {
+			throw new Exception("Invalid record ID");
+		}
+		
+		$model = $this->find('id=:id', array(
+			':id'	=> $data['id']
+		));
+		
+		$model->attributes = $data;
+		
+		if (!$model->validate()) {
+			$errors = array_shift(array_values($model->errors));
+			if (isset($errors[0])) {
+				throw new Exception($errors[0], 400);
+			}
+		}
+		
+		//$this->isNewRecord = true;
+		if ($model->save()) {
+			return $model;
+		} else {
+			throw new Exception("Can't save data");
+		}
+	}
+	
+	public function deleteRecord($id) {
+		$model = $this->find('id=:id', array(
+			':id'	=> $id
+		));
+		
+		if (empty($model)) {
+			throw new Exception("Record not exist");
+		}
+		
+		return $model->delete();
+	}
 }

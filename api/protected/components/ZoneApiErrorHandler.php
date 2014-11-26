@@ -106,7 +106,7 @@ class ZoneApiErrorHandler extends GNErrorHandler
 		$message = "$event->code: $event->message ($event->file:$event->line)";
 		$this->sendResponse(500, array(), $message);
 		}*/
-		$error = self::saveError($err);
+		//$error = self::saveError($err);
 		self::showError($error);
 	}
 	public static function handlingException($event)
@@ -137,7 +137,7 @@ class ZoneApiErrorHandler extends GNErrorHandler
 			//'trace'	   => debug_backtrace()
 			
 		);
-
+		
 		/*
 		$exception = $event->exception;
 		if (isset($_GET['xdebug'])) {
@@ -153,8 +153,8 @@ class ZoneApiErrorHandler extends GNErrorHandler
 		}
 		$this->sendResponse($code, array(),  $exception->getMessage());
 		*/
-		$error = self::saveError($err);
-		self::showError($error);
+		//$error = self::saveError($err);
+		self::showError($err);
 	}
 
 	/**
